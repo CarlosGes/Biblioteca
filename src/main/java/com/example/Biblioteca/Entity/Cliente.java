@@ -1,10 +1,16 @@
 package com.example.Biblioteca.Entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
+import java.io.Serializable;
+import java.util.List;
+import java.util.Set;
+
 @Entity
-public class Cliente {
+public class Cliente implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idCliente;
@@ -13,10 +19,9 @@ public class Cliente {
     private String cpf;
 
 
-    @OneToOne
-    @JoinColumn(name = "idEmprestimo", referencedColumnName = "idEmprestimo")
-    @JsonIgnoreProperties("clientes")
-    private Emprestimo emprestimo;
+    @OneToMany(mappedBy = "cliente")
+    @JsonIgnore
+    private List<Emprestimo> emprestimo;
 
 
     public Cliente(Long idCliente, String nome, String sobrenome, String cpf) {
@@ -61,11 +66,11 @@ public class Cliente {
         this.idCliente = idCliente;
     }
 
-    public Emprestimo getEmprestimo() {
+    public List<Emprestimo> getEmprestimo() {
         return emprestimo;
     }
 
-    public void setEmprestimo(Emprestimo emprestimo) {
+    public void setEmprestimo(List<Emprestimo> emprestimo) {
         this.emprestimo = emprestimo;
     }
 }

@@ -6,12 +6,18 @@ import com.example.Biblioteca.Repository.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
+import java.util.List;
 import java.util.Optional;
 @Service
 public class ClienteService {
     @Autowired
     private ClienteRepository clienteRepository;
 
+
+    public List<Cliente> getAll(){
+        return clienteRepository.findAll();
+    }
 
     public Cliente fromDTO(ClienteDTO clienteDTO){
         Cliente cliente = new Cliente();
@@ -30,7 +36,6 @@ public class ClienteService {
         clienteDTO.setNome(clienteDTO.getNome());
         cliente.setSobrenome(clienteDTO.getSobrenome());
         clienteDTO.setCpf(clienteDTO.getCpf());
-        clienteDTO.setEmprestimo(clienteDTO.getEmprestimo());
 
         return clienteDTO;
     }
@@ -59,7 +64,7 @@ public class ClienteService {
             cliente.setNome(clienteDTO.getNome());
             cliente.setSobrenome(clienteDTO.getSobrenome());
             cliente.setCpf(clienteDTO.getCpf());
-            cliente.setEmprestimo(clienteDTO.getEmprestimo());
+
 
             Cliente clienteUpdate = clienteRepository.save(cliente);
 

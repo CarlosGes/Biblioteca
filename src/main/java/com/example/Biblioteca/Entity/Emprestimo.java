@@ -1,13 +1,16 @@
 package com.example.Biblioteca.Entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
+
+import java.util.Set;
 
 @Entity
-public class Emprestimo {
+public class Emprestimo implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,12 +18,18 @@ public class Emprestimo {
     private Date data_inicial;
     private Date data_final;
 
-    @OneToMany
-    @JoinColumn(name = "idLivro", referencedColumnName = "idLivro")
-    private Livro livro;
+    @ManyToOne
+    @JoinColumn(name = "id_Cliente", referencedColumnName = "idCliente")
+    private Cliente cliente;
 
-    @OneToOne(mappedBy = "curso", cascade = CascadeType.ALL)
-    private List<Cliente> Clientes;
+    @ManyToMany
+    @JoinTable(
+            name = "emprestimo_livro",
+            joinColumns = @JoinColumn(name = "emprestimo_id"),
+            inverseJoinColumns = @JoinColumn(name = "livro_id")
+    )
+    private Set<Livro> livros;
+
 
     public Emprestimo(Long idEmprestimo, Date data_inicial, Date data_final) {
         this.idEmprestimo = idEmprestimo;
@@ -55,4 +64,5 @@ public class Emprestimo {
     public void setData_final(Date data_final) {
         this.data_final = data_final;
     }
+
 }

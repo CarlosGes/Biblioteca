@@ -4,13 +4,14 @@ public class LivroDTO {
     private Long idLivro;
     private String nome;
     private String autor;
-    private String isbn;
+    private int isbn;
     private String genero;
 
     public LivroDTO() {
+
     }
 
-    public LivroDTO(Long idLivro, String nome, String autor, String isbn, String genero) {
+    public LivroDTO(Long idLivro, String nome, String autor, int isbn, String genero) {
         this.idLivro = idLivro;
         this.nome = nome;
         this.autor = autor;
@@ -42,11 +43,11 @@ public class LivroDTO {
         this.autor = autor;
     }
 
-    public String getIsbn() {
+    public int getIsbn() {
         return isbn;
     }
 
-    public void setIsbn(String isbn) {
+    public void setIsbn(int isbn) {
         this.isbn = isbn;
     }
 
@@ -58,3 +59,4 @@ public class LivroDTO {
         this.genero = genero;
     }
 }
+

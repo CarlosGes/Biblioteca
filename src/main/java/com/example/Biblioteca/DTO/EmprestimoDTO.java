@@ -1,23 +1,28 @@
 package com.example.Biblioteca.DTO;
 
+import com.example.Biblioteca.Entity.Cliente;
 import com.example.Biblioteca.Entity.Emprestimo;
+import com.example.Biblioteca.Entity.Livro;
 
 import java.util.Date;
+import java.util.List;
 
 public class EmprestimoDTO {
     private Long idEmprestimo;
     private Date data_inicial;
     private Date data_final;
-    private Emprestimo emprestimo;
+    private Cliente cliente;
+
+    private List<Livro> livros;
 
     public EmprestimoDTO() {
     }
 
-    public EmprestimoDTO(Long idEmprestimo, Date data_inicial, Date data_final, Emprestimo emprestimo) {
+    public EmprestimoDTO(Long idEmprestimo, Date data_inicial, Date data_final, Cliente cliente) {
         this.idEmprestimo = idEmprestimo;
         this.data_inicial = data_inicial;
         this.data_final = data_final;
-        this.emprestimo = emprestimo;
+        this.cliente = cliente;
     }
 
     public Long getIdEmprestimo() {
@@ -44,11 +49,11 @@ public class EmprestimoDTO {
         this.data_final = data_final;
     }
 
-    public Emprestimo getEmprestimo() {
-        return emprestimo;
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public void setEmprestimo(Emprestimo emprestimo) {
-        this.emprestimo = emprestimo;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 }

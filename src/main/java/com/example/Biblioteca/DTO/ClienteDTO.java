@@ -7,18 +7,16 @@ public class ClienteDTO {
     private String nome;
     private String sobrenome;
     private String cpf;
-    private Emprestimo emprestimo;
 
 
     public ClienteDTO() {
     }
 
-    public ClienteDTO(Long idCliente, String nome, String sobrenome, String cpf, Emprestimo emprestimo) {
+    public ClienteDTO(Long idCliente, String nome, String sobrenome, String cpf) {
         this.idCliente = idCliente;
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.cpf = cpf;
-        this.emprestimo = emprestimo;
     }
 
     public Long getIdCliente() {
@@ -51,13 +49,5 @@ public class ClienteDTO {
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
-    }
-
-    public Emprestimo getEmprestimo() {
-        return emprestimo;
-    }
-
-    public void setEmprestimo(Emprestimo emprestimo) {
-        this.emprestimo = emprestimo;
     }
 }
