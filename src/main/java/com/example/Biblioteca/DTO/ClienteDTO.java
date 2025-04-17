@@ -1,6 +1,6 @@
 package com.example.Biblioteca.DTO;
 
-import com.example.Biblioteca.Entity.Emprestimo;
+
 
 public class ClienteDTO {
     private Long idCliente;

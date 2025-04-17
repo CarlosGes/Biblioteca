@@ -66,9 +66,9 @@ public class LivroService {
             livro.setIsbn(livroDTO.getIsbn());
             livro.setGenero(livroDTO.getGenero());
 
-            Livro livroUpdate = livroRepository.save(livro);
+            livro = livroRepository.save(livro);
 
-            return Optional.of(this.toDTO(livroUpdate));
+            return Optional.of(this.toDTO(livro));
         }else {
             return Optional.empty();
         }

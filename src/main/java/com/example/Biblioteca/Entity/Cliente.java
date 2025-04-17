@@ -16,6 +16,7 @@ public class Cliente implements Serializable {
     private Long idCliente;
     private String nome;
     private String sobrenome;
+    @Column(unique = true)
     private String cpf;
 
 
